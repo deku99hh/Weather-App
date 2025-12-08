@@ -12,6 +12,21 @@ async function gitTheWeather(city) {
             let data = await response.json();
             console.log(response);
             console.log(data);
+
+            main.classList.add('d-block')
+            main.classList.remove('d-none')
+            let condition = data.weather[0].description;
+            let tempCelsius = Math.floor(data.main.temp - 273.15);
+            let rainVolume = data.rain ? data.rain["1h"] : 0;
+
+            console.log(condition);
+            main.innerHTML=`
+                <p class="cityName display-1">${serch}</p>
+                <p class="temperature">${tempCelsius}°C</p>
+                <p class="Rainfall">Rainfall:${rainVolume}%</p>
+                <p class="condition h4">${condition}</p>
+                <p class="emoji display-2">☀️</p>
+            `;
             
         }else{
             throw new Error('could not get it');
@@ -23,7 +38,7 @@ async function gitTheWeather(city) {
     }
     
 };
-gitTheWeather('ciro');
+// gitTheWeather('ciro');
 
 serchButt.addEventListener('click',()=>{
     serch = serchInput.value;

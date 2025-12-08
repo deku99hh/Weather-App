@@ -35,6 +35,14 @@ async function gitTheWeather(city) {
     catch(error){
         console.error(error);
         console.error('can not');
+        
+            main.classList.add('d-block')
+            main.classList.remove('d-none')
+
+            main.innerHTML=`
+                <h1>Wrong name</h1>
+            `;
+
     }
     
 };
